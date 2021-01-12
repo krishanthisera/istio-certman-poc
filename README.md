@@ -1,8 +1,13 @@
 # istio-certman-poc
-Developing POC for ISTIO with Cert-Manager  
+Developing POC for ISTIO with Cert-Manager.  
 
+*Note that the Terraform implementation required to be optimised since the implementation is focused on the maximum readability for learning*  
 
-*Note that the Terraform files required to be optimised since the implementation is focused on the maximum readability for learning*  
+*In a scenario where you need to scale the EKS. Change the note count.*
+
+# Dependencies
+1. Terraform
+2. AWS Account
 
 # How to run -- Deployment
 1. Clone the repo  
