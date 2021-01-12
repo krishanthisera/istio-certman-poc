@@ -27,3 +27,11 @@ Developing POC for ISTIO with Cert-Manager
     terraform plan -out=istio.tfplan
     terraform apply istio.tfplan
 ```
+10. Create Cert-Manager Namespace
+`kubectl create ns cert-manager`
+11. Deploy CRDs for Cert-Manager
+`kubectl apply -f cert-manager/cert-man-crds.yaml -n cert-manager`
+12. Label Namespace to disable validations
+`kubectl label namespace cert-manager certmanager.k8s.io/disable-validation=true`
+13. Install Cert-Manger Resources
+`kubectl apply -f cert-manager/cert-man-res.yaml -n cert-manager`
