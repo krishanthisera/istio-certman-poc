@@ -78,6 +78,12 @@ if issuer is ready
 `kubectl apply -f cert-manager-configs/book-cert-prod.yaml `
 4. Test the connectivity using browser
 
+# Install Istio addons
+1. install Kaili
+`kubectl apply -f istio-addons/kiali.yaml`
+
+
+
 
 
 
