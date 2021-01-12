@@ -7,11 +7,16 @@ spec:
     istio: ingressgateway # use Istio default gateway implementation
   servers:
   - port:
-      number: 80
-      name: http
-      protocol: HTTP
+      number: 443
+      name: book-info-https
+      protocol: HTTPS
+    tls:
+      mode: SIMPLE
+      serverCertificate: sds
+      privateKey: sds
+      credentialName: book-certificate
     hosts:
-    - "*"
+    - "book.d3v0ps.com.au"
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService

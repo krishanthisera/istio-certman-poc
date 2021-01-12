@@ -1,0 +1,49 @@
+--2021-01-12 19:36:49--  https://github.com/jetstack/cert-manager/releases/download/v1.1.0/cert-manager.yaml
+Resolving github.com (github.com)... 13.236.229.21
+Connecting to github.com (github.com)|13.236.229.21|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://github-production-release-asset-2e65be.s3.amazonaws.com/92313258/66295180-2e74-11eb-8332-7684d40dcd98?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20210112%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210112T090649Z&X-Amz-Expires=300&X-Amz-Signature=8a131614768d58ba5bed93c23fa21d04a9ee5374a466444eb62352d89e3b8266&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=92313258&response-content-disposition=attachment%3B%20filename%3Dcert-manager.yaml&response-content-type=application%2Foctet-stream [following]
+--2021-01-12 19:36:50--  https://github-production-release-asset-2e65be.s3.amazonaws.com/92313258/66295180-2e74-11eb-8332-7684d40dcd98?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20210112%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210112T090649Z&X-Amz-Expires=300&X-Amz-Signature=8a131614768d58ba5bed93c23fa21d04a9ee5374a466444eb62352d89e3b8266&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=92313258&response-content-disposition=attachment%3B%20filename%3Dcert-manager.yaml&response-content-type=application%2Foctet-stream
+Resolving github-production-release-asset-2e65be.s3.amazonaws.com (github-production-release-asset-2e65be.s3.amazonaws.com)... 52.216.141.76
+Connecting to github-production-release-asset-2e65be.s3.amazonaws.com (github-production-release-asset-2e65be.s3.amazonaws.com)|52.216.141.76|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1708777 (1.6M) [application/octet-stream]
+Saving to: ‘cert-manager.yaml’
+
+     0K .......... .......... .......... .......... ..........  2%  116K 14s
+    50K .......... .......... .......... .......... ..........  5%  212K 10s
+   100K .......... .......... .......... .......... ..........  8% 1.06M 7s
+   150K .......... .......... .......... .......... .......... 11%  267K 7s
+   200K .......... .......... .......... .......... .......... 14% 3.40M 5s
+   250K .......... .......... .......... .......... .......... 17% 5.45M 4s
+   300K .......... .......... .......... .......... .......... 20% 1.37M 4s
+   350K .......... .......... .......... .......... .......... 23%  297K 4s
+   400K .......... .......... .......... .......... .......... 26% 2.61M 3s
+   450K .......... .......... .......... .......... .......... 29% 5.38M 3s
+   500K .......... .......... .......... .......... .......... 32% 4.21M 2s
+   550K .......... .......... .......... .......... .......... 35% 1.81M 2s
+   600K .......... .......... .......... .......... .......... 38%  465K 2s
+   650K .......... .......... .......... .......... .......... 41%  554K 2s
+   700K .......... .......... .......... .......... .......... 44% 5.12M 2s
+   750K .......... .......... .......... .......... .......... 47% 5.21M 2s
+   800K .......... .......... .......... .......... .......... 50% 3.20M 1s
+   850K .......... .......... .......... .......... .......... 53%  301K 1s
+   900K .......... .......... .......... .......... .......... 56% 1.11M 1s
+   950K .......... .......... .......... .......... .......... 59% 5.46M 1s
+  1000K .......... .......... .......... .......... .......... 62% 4.43M 1s
+  1050K .......... .......... .......... .......... .......... 65% 4.17M 1s
+  1100K .......... .......... .......... .......... .......... 68%  315K 1s
+  1150K .......... .......... .......... .......... .......... 71%  958K 1s
+  1200K .......... .......... .......... .......... .......... 74% 4.76M 1s
+  1250K .......... .......... .......... .......... .......... 77% 7.43M 1s
+  1300K .......... .......... .......... .......... .......... 80% 4.99M 0s
+  1350K .......... .......... .......... .......... .......... 83%  523K 0s
+  1400K .......... .......... .......... .......... .......... 86%  476K 0s
+  1450K .......... .......... .......... .......... .......... 89% 2.13M 0s
+  1500K .......... .......... .......... .......... .......... 92% 5.14M 0s
+  1550K .......... .......... .......... .......... .......... 95% 5.32M 0s
+  1600K .......... .......... .......... .......... .......... 98%  550K 0s
+  1650K .......... ........                                   100% 3.03M=2.2s
+
+2021-01-12 19:36:53 (744 KB/s) - ‘cert-manager.yaml’ saved [1708777/1708777]
+

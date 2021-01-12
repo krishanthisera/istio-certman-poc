@@ -1,0 +1,18 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: book-certificate-prod
+  namespace: istio-system
+spec:
+  secretName: book-certificate
+  issuerRef:
+    name: letsencrypt-prod
+  commonName: book.d3v0ps.com.au
+  dnsNames:
+  - book.d3v0ps.com.au
+  # acme:
+  #   config:
+  #   - http01:
+  #       ingressClass: istio
+  #     domains:
+  #     - book.d3v0ps.com.au

@@ -1,0 +1,16 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: letsencrypt-staging
+  namespace: istio-system
+spec:
+  acme:
+    email: user@d3v0ps.com.au
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: example-issuer-account-key
+    #http01: {}
+    solvers:
+    - http01:
+        ingress:
+          class: istio
