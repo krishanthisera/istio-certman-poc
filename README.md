@@ -78,9 +78,14 @@ if issuer is ready
 `kubectl apply -f cert-manager-configs/book-cert-prod.yaml `
 4. Test the connectivity using browser
 
+# Configure mTILS strict
+1. kubectl apply -f istio-addons/mTLS.yaml
+
 # Install Istio addons
 1. install Kaili
 `kubectl apply -f istio-addons/kiali.yaml`
+2. Use Kiali
+`kubectl port-forward svc/kiali 20001:20001 -n istio-system`
 
 
 
