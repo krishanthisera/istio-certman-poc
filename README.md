@@ -4,7 +4,7 @@ Developing POC for ISTIO with Cert-Manager
 
 *Note that the Terraform files required to be optimised since the implementation is focused on the maximum readability for learning*
 
-# How to run
+# How to run -- Deployment
 1. Clone the repo
 `git clone https://github.com/krishanthisera/istio-certman-poc.git`
 2. cd into the terraform directory and execute terraform plan
@@ -35,3 +35,14 @@ Developing POC for ISTIO with Cert-Manager
 `kubectl label namespace cert-manager certmanager.k8s.io/disable-validation=true`
 13. Install Cert-Manger Resources
 `kubectl apply -f cert-manager/cert-man-res.yaml -n cert-manager`
+
+# How to run - Ingress Testing
+1. Deploy the demo app
+`kubectl apply -f demo-app/bookinfo.yaml`
+2. Configure the Gateway and VirtualService
+```sh
+    kubectl apply -f demo-app/bookinfo.yaml
+    kubectl apply -f demo-app/ingress.yaml
+```
+3. Verify in the browser
+`http://book.d3v0ps.com.au/`
