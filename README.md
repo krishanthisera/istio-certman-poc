@@ -13,7 +13,10 @@ Developing POC for ISTIO with Cert-Manager.  The configs and source codes are fo
 1. Clone the repo  
 `git clone https://github.com/krishanthisera/istio-certman-poc.git`  
 2. cd into the terraform directory and execute terraform plan  
-`terraform plan -out=istio.tfplan`  
+```sh
+terraform init
+terraform plan -out=istio.tfplan
+```  
 3. Apply terraform plan  
 `terraform apply "istio.tfplan`  
 4. Configure EKS config  

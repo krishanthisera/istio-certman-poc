@@ -14,6 +14,4 @@ resource "aws_route53_zone" "zone" {
 #   type     = "CNAME"
 #   ttl      = "500"
 #   records  = ["${data.kubernetes_service.ingress_gateway.load_balancer_ingress.0.hostname}"]
-
- 
 # }
