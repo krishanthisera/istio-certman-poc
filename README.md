@@ -93,9 +93,9 @@ if issuer is ready
 1. kubectl apply -f istio-addons/mTLS.yaml
 
 # Install Istio addons
-1. install Kaili
+1. install Kiali  
 `kubectl apply -f istio-addons/kiali.yaml`
-2. Use Kiali
+2. Use Kiali  
 `kubectl port-forward svc/kiali 20001:20001 -n istio-system`
 
 
