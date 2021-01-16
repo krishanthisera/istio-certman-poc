@@ -13,6 +13,7 @@ Developing POC for ISTIO with Cert-Manager.  The configs and source codes are fo
 1. Clone the repo  
 `git clone https://github.com/krishanthisera/istio-certman-poc.git`  
 2. cd into the terraform directory and execute terraform plan  
+*Please do mind to change the worker group config using [main.tf]*
 ```sh
 terraform init
 terraform plan -out=istio.tfplan
@@ -25,9 +26,9 @@ terraform plan -out=istio.tfplan
 5. Create Istio name space:  
 `kubectl create ns istio-system`  
 6. Install CRD  
-`kubectl apply -f istio-certman-poc/istio-init/istio-crd.yaml --namespace=istio-system`  
+`kubectl apply -f istio-init/istio-crd.yaml --namespace=istio-system`  
 7. Install Istio resources  
-`kubectl apply -f istio-certman-poc/istio-init/istio-res.yaml --namespace=istio-system`  
+`kubectl apply -f istio-init/istio-res.yaml --namespace=istio-system`  
 8. Verify the LB  
 `kubectl get svc -n istio-system`  
 9. Uncomment following lines to automate configure the DNS records 
@@ -37,14 +38,20 @@ terraform plan -out=istio.tfplan
     terraform plan -out=istio.tfplan
     terraform apply istio.tfplan
 ```
-10. Create the Cert-Manager Namespace  
-`kubectl create ns cert-manager`  
+10. Create the Cert-Manager Namespace and (enable sidecar injection - optional) 
+```sh
+kubectl create ns cert-manager  
+kubectl label namespace cert-manager istio-injection=enabled
+```
 11. Install Cert-Manger  
-`kubectl apply -f cert-manager/cert-man.yaml -n cert-manager`  
+`kubectl apply -f cert-manager/cert-man.yaml`  
 
 # How to run - Ingress Testing
-1. Deploy the demo app  
-`kubectl apply -f demo-app/bookinfo.yaml`  
+1. Enable ISTIO Proxy(envoy) side car injection and Deploy the demo app  
+```sh
+kubectl label namespace default istio-injection=enabled
+kubectl apply -f demo-app/bookinfo.yaml
+```
 2. Configure the Gateway and VirtualService - optional  
 ```sh
     kubectl apply -f demo-app/bookinfo.yaml
@@ -91,7 +98,7 @@ if issuer is ready
 `kubectl port-forward svc/kiali 20001:20001 -n istio-system`
 
 
-
+[main.tf][https://github.com/krishanthisera/istio-certman-poc/blob/main/terraform/main.tf]
 
 
 
