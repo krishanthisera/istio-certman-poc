@@ -24,8 +24,7 @@ Afterwards, grab the name server IP addresses by using the tf-output and configu
 `terraform apply "istio.tfplan`  
 4. Configure EKS config  
 `terraform output kubectl_config > ~/.kube/config`  
-
-5. Create Istio name space:  
+5. Create Istio name space 
 `kubectl create ns istio-system`  
 6. Install CRD  
 `kubectl apply -f istio-init/istio-crd.yaml --namespace=istio-system`  
