@@ -1,7 +1,7 @@
 # istio-certman-poc
 Developing POC for ISTIO with Cert-Manager.  The configs and source codes are for "Amazon EKS with ISTIO" POC and not suitable for the production.
 
-*Note that the Terraform implementation required to be optimised since the implementation is focused on the maximum readability for learning*  
+*Note that the Terraform implementation required to be optimised (this is quite a static implementation) since the implementation is focused on the maximum readability for learning*  
 
 *In a scenario where you need to scale the EKS. Change the note count.*
 
