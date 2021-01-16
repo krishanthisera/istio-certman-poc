@@ -14,10 +14,10 @@ Developing POC for ISTIO with Cert-Manager.  The configs and source codes are fo
 `git clone https://github.com/krishanthisera/istio-certman-poc.git`  
 2. cd into the terraform directory and execute terraform plan  
 *Please do mind to change the worker group config using [main.tf]*  
-```sh
-terraform init
-terraform plan -out=istio.tfplan
-```  
+    ```sh
+    terraform init
+    terraform plan -out=istio.tfplan
+    ```  
 Afterwards, grab the name server IP addresses by using the tf-output and configure your domain registrar to point your ROUT53 zone,  
 `terraform output name_servers`  
 3. Apply terraform plan  
