@@ -99,7 +99,7 @@ if issuer is ready
 `kubectl port-forward svc/kiali 20001:20001 -n istio-system`
 
 
-[main.tf][https://github.com/krishanthisera/istio-certman-poc/blob/main/terraform/main.tf]
+[main.tf]: https://github.com/krishanthisera/istio-certman-poc/blob/main/terraform/main.tf
 
 
 
