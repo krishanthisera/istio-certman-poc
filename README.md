@@ -89,7 +89,7 @@ if issuer is ready
 `kubectl apply -f cert-manager-configs/book-cert-prod.yaml `
 4. Test the connectivity using browser
 
-# Configure mTILS strict
+# Configure mTLS strict
 1. kubectl apply -f istio-addons/mTLS.yaml
 
 # Install Istio addons
