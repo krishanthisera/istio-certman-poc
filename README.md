@@ -3,7 +3,7 @@ Developing POC for ISTIO with Cert-Manager.  The configs and source codes are fo
 
 *Note that the Terraform implementation required to be optimised (this is quite a static implementation) since the implementation is focused on the maximum readability for learning*  
 
-*In a scenario where you need to scale the EKS. Change the note count.*
+*In a scenario where you need to scale the EKS. Change the node count.*
 
 # Dependencies
 1. Terraform
