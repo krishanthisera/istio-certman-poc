@@ -28,7 +28,7 @@ Developing POC for ISTIO with Cert-Manager.  The configs and source codes are fo
     - `curl -sL https://istio.io/downloadIstioctl | sh -`  
     - `export PATH=$PATH:$HOME/.istioctl/bin`  
     - `istioctl x precheck`  
-    - The out put should be like this,
+    - The output should be like this,
         ```sh
             Checking the cluster to make sure it is ready for Istio installation...
 
