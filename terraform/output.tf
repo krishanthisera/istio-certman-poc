@@ -29,6 +29,3 @@ output "name_servers" {
   value       = aws_route53_zone.zone.name_servers
 }
 
-# output "k8s_ingress" {
-#   value = data.kubernetes_service.ingress_gateway.load_balancer_ingress.0.hostname
-# }

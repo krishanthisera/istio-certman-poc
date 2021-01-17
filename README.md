@@ -9,7 +9,7 @@ Developing POC for ISTIO with Cert-Manager.  The configs and source codes are fo
 1. Terraform
 2. AWS Account
 
-# How to run -- Deployment
+# How to run -- ISTIO Deployment
 1. Clone the repo  
 `git clone https://github.com/krishanthisera/istio-certman-poc.git`  
 2. cd into the terraform directory and execute terraform plan  
@@ -18,10 +18,10 @@ Developing POC for ISTIO with Cert-Manager.  The configs and source codes are fo
     terraform init
     terraform plan -out=istio.tfplan
     ```  
-    Afterwards, grab the name server IP addresses by using the tf-output and configure your domain registrar to point your ROUT53 zone,  
-`terraform output name_servers`  
 3. Apply terraform plan  
 `terraform apply "istio.tfplan`  
+Afterwards, grab the name server IP addresses by using the tf-output and configure your domain registrar to point your ROUT53 zone,  
+`terraform output name_servers`    
 4. Configure EKS config  
 `terraform output kubectl_config > ~/.kube/config`  
 6. Install istioctl  
@@ -65,6 +65,14 @@ The output will be like this,
     ✔ Istiod installed                                                                                                                                                                                                 
     ✔ Ingress gateways installed                                                                                                                                                                                       
     ✔ Installation complete 
+```  
+8. Add DNS for records  
+- Uncomment `route53_records.tf`  
+`sed 's/^.//g' -i route53_records.tf`  
+- Apply the changes  
+```sh
+terraform plan -out=istio.tfplan
+terraform apply "istio.tfplan"
 ```  
 # Install Cert-Manager
 10. Create the Cert-Manager Namespace and (enable sidecar injection - optional) 
@@ -121,15 +129,21 @@ if issuer is ready
 1. kubectl apply -f istio-addons/mTLS.yaml
 
 # Install Istio addons
+- Prometheus
+    1. Install Prometheus  
+    `kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.8/samples/addons/prometheus.yaml`
+    2. Access  Prometheus
+    `kubectl port-forward svc/prometheus 9090:9090 -n istio-system`
 - Kiali
+    *Note that Prometheus should be installed to Kiali to operate*
     1. install Kiali  
     `kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.8/samples/addons/kiali.yaml`  
-    2. Use Kiali   
+    2. Access Kiali   
     `kubectl port-forward svc/kiali 20001:20001 -n istio-system`  
 - Jaeger  
     1. Install Jaeger  
     `kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.8/samples/addons/jaeger.yaml`  
-    2. Use Jaeger  
+    2. Access Jaeger  
     `istioctl dashboard jaeger`  
 
 
