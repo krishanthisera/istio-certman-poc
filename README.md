@@ -1,7 +1,7 @@
 # istio-certman-poc
 Developing POC for ISTIO with Cert-Manager.  The configs and source codes are for "Amazon EKS with ISTIO" POC and not suitable for the production.
 
-*Note that the Terraform implementation required to be optimised (this is quite a static implementation) since the implementation is focused on the maximum readability for learning*  
+*Note that the Terraform implementation required to be optimized (this is quite a static implementation) since the implementation is focused on the maximum readability for learning*  
 
 *In a scenario where you need to scale the EKS. Change the node count.*
 
@@ -30,41 +30,41 @@ Afterwards, grab the name server IP addresses by using the tf-output and configu
     - `istioctl x precheck`  
     - The output should be like this,
         ```sh
-            Checking the cluster to make sure it is ready for Istio installation...
+        Checking the cluster to make sure it is ready for Istio installation...
 
-            #1. Kubernetes-api
-            -----------------------
-            Can initialize the Kubernetes client.
-            Can query the Kubernetes API Server.
+        #1. Kubernetes-api
+        -----------------------
+        Can initialize the Kubernetes client.
+        Can query the Kubernetes API Server.
 
-            #2. Kubernetes-version
-            -----------------------
-            Istio is compatible with Kubernetes: v1.18.9-eks-d1db3c.
+        #2. Kubernetes-version
+        -----------------------
+        Istio is compatible with Kubernetes: v1.18.9-eks-d1db3c.
 
-            #3. Istio-existence
-            -----------------------
-            Istio will be installed in the istio-system namespace.
+        #3. Istio-existence
+        -----------------------
+        Istio will be installed in the istio-system namespace.
 
-            #4. Kubernetes-setup
-            -----------------------
-            Can create necessary Kubernetes configurations: Namespace,ClusterRole,ClusterRoleBinding,CustomResourceDefinition,Role,ServiceAccount,Service,Deployments,ConfigMap. 
+        #4. Kubernetes-setup
+        -----------------------
+        Can create necessary Kubernetes configurations: Namespace,ClusterRole,ClusterRoleBinding,CustomResourceDefinition,Role,ServiceAccount,Service,Deployments,ConfigMap. 
 
-            #5. SideCar-Injector
-            -----------------------
-            This Kubernetes cluster supports automatic sidecar injection. To enable automatic sidecar injection see https://istio.io/v1.8/docs/setup/additional-setup/sidecar-injection/#deploying-an-app
+        #5. SideCar-Injector
+        -----------------------
+        This Kubernetes cluster supports automatic sidecar injection. To enable automatic sidecar injection see https://istio.io/v1.8/docs/setup/additional-setup/sidecar-injection/#deploying-an-app
 
-            -----------------------
-            Install Pre-Check passed! The cluster is ready for Istio installation.
+        -----------------------
+        Install Pre-Check passed! The cluster is ready for Istio installation.
         ```
 7. Install ISTIO  
 `istioctl install --set profile=default`  
 The output will be like this,
 ```sh
-    This will install the Istio default profile with ["Istio core" "Istiod" "Ingress gateways"] components into the cluster. Proceed? (y/N) y
-    ✔ Istio core installed                                                                                                                                                                                             
-    ✔ Istiod installed                                                                                                                                                                                                 
-    ✔ Ingress gateways installed                                                                                                                                                                                       
-    ✔ Installation complete 
+This will install the Istio default profile with ["Istio core" "Istiod" "Ingress gateways"] components into the cluster. Proceed? (y/N) y
+✔ Istio core installed                                                                                                                                                                                             
+✔ Istiod installed                                                                                                                                                                                                 
+✔ Ingress gateways installed                                                                                                                                                                                       
+✔ Installation complete 
 ```  
 8. Add DNS for records  
 - Uncomment `route53_records.tf`  
