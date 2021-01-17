@@ -24,28 +24,56 @@ Developing POC for ISTIO with Cert-Manager.  The configs and source codes are fo
 `terraform apply "istio.tfplan`  
 4. Configure EKS config  
 `terraform output kubectl_config > ~/.kube/config`  
-5. Create Istio name space  
-`kubectl create ns istio-system`  
-6. Install CRD  
-`kubectl apply -f istio-init/istio-crd.yaml --namespace=istio-system`  
-7. Install Istio resources  
-`kubectl apply -f istio-init/istio-res.yaml --namespace=istio-system`  
-8. Verify the LB  
-`kubectl get svc -n istio-system`  
-9. Uncomment following lines to automate configure the DNS records 
-  - route53.tf : line 10 to 17
-  - data.tf : line 15 to 21
+6. Install istioctl  
+    - `curl -sL https://istio.io/downloadIstioctl | sh -`  
+    - `export PATH=$PATH:$HOME/.istioctl/bin`  
+    - `istioctl x precheck`  
+    - The out put should be like this,
+        ```sh
+            Checking the cluster to make sure it is ready for Istio installation...
+
+            #1. Kubernetes-api
+            -----------------------
+            Can initialize the Kubernetes client.
+            Can query the Kubernetes API Server.
+
+            #2. Kubernetes-version
+            -----------------------
+            Istio is compatible with Kubernetes: v1.18.9-eks-d1db3c.
+
+            #3. Istio-existence
+            -----------------------
+            Istio will be installed in the istio-system namespace.
+
+            #4. Kubernetes-setup
+            -----------------------
+            Can create necessary Kubernetes configurations: Namespace,ClusterRole,ClusterRoleBinding,CustomResourceDefinition,Role,ServiceAccount,Service,Deployments,ConfigMap. 
+
+            #5. SideCar-Injector
+            -----------------------
+            This Kubernetes cluster supports automatic sidecar injection. To enable automatic sidecar injection see https://istio.io/v1.8/docs/setup/additional-setup/sidecar-injection/#deploying-an-app
+
+            -----------------------
+            Install Pre-Check passed! The cluster is ready for Istio installation.
+        ```
+7. Install ISTIO  
+`istioctl install --set profile=default`  
+The output will be like this,
 ```sh
-    terraform plan -out=istio.tfplan
-    terraform apply istio.tfplan
-```
+    This will install the Istio default profile with ["Istio core" "Istiod" "Ingress gateways"] components into the cluster. Proceed? (y/N) y
+    ✔ Istio core installed                                                                                                                                                                                             
+    ✔ Istiod installed                                                                                                                                                                                                 
+    ✔ Ingress gateways installed                                                                                                                                                                                       
+    ✔ Installation complete 
+```  
+# Install Cert-Manager
 10. Create the Cert-Manager Namespace and (enable sidecar injection - optional) 
 ```sh
 kubectl create ns cert-manager  
 kubectl label namespace cert-manager istio-injection=enabled
 ```
 11. Install Cert-Manger  
-`kubectl apply -f cert-manager/cert-man.yaml`  
+`kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v1.1.0/cert-manager.yaml`  
 
 # How to run - Ingress Testing
 1. Enable ISTIO Proxy(envoy) side car injection and Deploy the demo app  
@@ -93,10 +121,16 @@ if issuer is ready
 1. kubectl apply -f istio-addons/mTLS.yaml
 
 # Install Istio addons
-1. install Kiali  
-`kubectl apply -f istio-addons/kiali.yaml`
-2. Use Kiali  
-`kubectl port-forward svc/kiali 20001:20001 -n istio-system`
+- Kiali
+    1. install Kiali  
+    `kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.8/samples/addons/kiali.yaml`  
+    2. Use Kiali   
+    `kubectl port-forward svc/kiali 20001:20001 -n istio-system`  
+- Jaeger  
+    1. Install Jaeger  
+    `kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.8/samples/addons/jaeger.yaml`  
+    2. Use Jaeger  
+    `istioctl dashboard jaeger`  
 
 
 [main.tf]: https://github.com/krishanthisera/istio-certman-poc/blob/main/terraform/main.tf
